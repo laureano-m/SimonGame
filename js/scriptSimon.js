@@ -23,7 +23,7 @@ function startGame() {
 
 document.getElementById('start').addEventListener('click', startGame); // cuando se le da click al boton de comenzar, llama a la funcion startGame.
 
-function displaySequence() {
+function displaySequence() {          // se muestra la secuencia del juego por cada nivel y se ilumina cada 1 seg cada boton
   for(let i = 0; i <= level; i++) { 
     setTimeout(function() {
       flashButton(gameSequence[i]);
@@ -31,7 +31,7 @@ function displaySequence() {
   }
 }
 
-function flashButton(color) {
+function flashButton(color) {                   // ilumina el boton tomando el color correspondiente y agrega la clase pressed en CSS
   let button = document.getElementById(color);
   button.classList.add('pressed');
   setTimeout(function() {
@@ -39,9 +39,9 @@ function flashButton(color) {
   }, 500);
 }
 
-let buttons = document.getElementsByClassName('game-button');
+let buttons = document.getElementsByClassName('game-button'); // obtiene todos los botons con la clase game-button
 
-for(let button of buttons) {
+for(let button of buttons) {                      // recorre el arreglo que tiene todos los botones del juego
   button.addEventListener('click', function(e) {
     e.target.classList.add('pressed');
     setTimeout(function() {
@@ -53,7 +53,7 @@ for(let button of buttons) {
       document.getElementById('start').disabled = false;
       return;
     }
-    score++; // Se añade un punto por cada botón correcto
+    score++; // Se suma un punto por cada botón correcto
     document.getElementById('score').innerText = `Puntaje: ${score}`;
     if(playerSequence.length === gameSequence.length) {
       alert('¡Felicidades, has ganado! Haz clic en Comenzar para jugar de nuevo.');
